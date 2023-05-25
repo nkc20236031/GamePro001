@@ -4,17 +4,43 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    Animator animator;
+    public float moveSpeed = 5;
 
-    private void Update()
+    private void Start()
     {
-        Application.targetFrameRate = 60;
-
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        Vector3 velocity = new Vector3(x, y) * speed;
-        transform.localPosition += velocity;
+        animator = GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+
+        if(x >= 0 && y == 0)
+        {
+            animator.SetTrigger("front");
+        }
+        else if(x <= -0.01f && y == 0)
+        {
+            animator.SetTrigger("back");
+        }
+
+        if(y >= 0.01f)
+        {
+            animator.SetTrigger("up");
+        }
+        else if(y <= -0.01f)
+        {
+            animator.SetTrigger("down");
+        }
+        transform.position += new Vector3(x, y).normalized * Time.deltaTime * moveSpeed;
+
+        Vector3 pos = transform.position;
+
+        pos.x = Mathf.Clamp(pos.x, -29, 29);
+        pos.y = Mathf.Clamp(pos.y, -15, 15);
+
+        transform.position = pos;
+    }
 }
