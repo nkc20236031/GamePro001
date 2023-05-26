@@ -37,4 +37,9 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Attack()
+    {
+        Destroy(gameObject);
+    }
 }

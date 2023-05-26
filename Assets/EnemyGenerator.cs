@@ -15,6 +15,7 @@ public class EnemyGenerator : MonoBehaviour
             this.delta = 0;
             GameObject go = Instantiate(EnemyPrefab);
             int px = Random.Range(-12, 12);
+            go.name = "EnemyPrefab";
             go.transform.position = new Vector3(35, px, 0);
             this.span = Random.Range(0.75f, 2);
         }
