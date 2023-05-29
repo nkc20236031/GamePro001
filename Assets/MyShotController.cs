@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MyShotController : MonoBehaviour
 {
-    GameObject enemy;
+    GameObject[] enemy;
 
     void Start()
     {
-        this.enemy = GameObject.Find("EnemyPrefab");
+        this.enemy = GameObject.FindGameObjectsWithTag("EnemyPrefab");
     }
 
     void Update()
@@ -21,14 +22,17 @@ public class MyShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+        //“–‚½‚è”»’è
+        Vector2 p1 = transform.position;
+        Vector2 p2 = this.enemy.transform.position;
+        Vector2 dir = p1 - p2;
+        float d = dir.magnitude;
+        float r1 = 0.5f;
+        float r2 = 3.75f;
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        Debug.Log("gomikasu");
-        GameObject attack = collision.gameObject;
-        if (collision.GetComponent<Transform>().tag == "Enemy")
+        if (d < r1 + r2)
         {
+            GameObject attack = GameObject.Find("EnemyPrefab");
             attack.GetComponent<EnemyController>().Attack();
             Destroy(gameObject);
         }

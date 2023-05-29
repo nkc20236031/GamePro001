@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2735679456752860115}
   - component: {fileID: 1303195179846689726}
   - component: {fileID: -1347480657073882350}
-  - component: {fileID: 6390698511101533011}
+  - component: {fileID: -5795325040065639298}
   m_Layer: 0
   m_Name: MyShotPrefab
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &6390698511101533011
+--- !u!58 &-5795325040065639298
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

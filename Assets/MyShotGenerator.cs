@@ -22,7 +22,7 @@ public class MyShotGenerator : MonoBehaviour
         {
             GameObject attack = Instantiate(MyShotPrefab);
             attack.name = "MyShotPrefab";
-            attack.transform.position = new Vector2(players.x + 1.5f, players.y);
+            attack.transform.position = new Vector2(players.x, players.y);
         }
     }
 }
