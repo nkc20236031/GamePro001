@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class MyShotController : MonoBehaviour
 {
-    GameObject[] enemy;
-
-    void Start()
-    {
-        this.enemy = GameObject.FindGameObjectsWithTag("EnemyPrefab");
-    }
+    GameObject enemy;
 
     void Update()
     {
@@ -22,19 +17,24 @@ public class MyShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //“–‚½‚è”»’è
-        Vector2 p1 = transform.position;
-        Vector2 p2 = this.enemy.transform.position;
-        Vector2 dir = p1 - p2;
-        float d = dir.magnitude;
-        float r1 = 0.5f;
-        float r2 = 3.75f;
 
-        if (d < r1 + r2)
+        enemy = GameObject.Find("EnemyPrefab");
+        if (enemy != null)
         {
-            GameObject attack = GameObject.Find("EnemyPrefab");
-            attack.GetComponent<EnemyController>().Attack();
-            Destroy(gameObject);
+            //“–‚½‚è”»’è
+            Vector2 p1 = transform.position;
+            Vector2 p2 = enemy.transform.position;
+            Vector2 dir = p1 - p2;
+            float d = dir.magnitude;
+            float r1 = 0.5f;
+            float r2 = 3.75f;
+
+            if (d < r1 + r2)
+            {
+                GameObject attack = GameObject.Find("EnemyPrefab");
+                attack.GetComponent<EnemyController>().Attack();
+                Destroy(gameObject);
+            }
         }
     }
 }
