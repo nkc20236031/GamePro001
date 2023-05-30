@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    GameObject player;
-
-    void Start()
-    {
-        this.player = GameObject.Find("player");
-    }
-
     void Update()
     {
         //ƒtƒŒ[ƒ€‚²‚Æ‚É“™‘¬‚ÅˆÚ“®
@@ -21,25 +14,12 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //“–‚½‚è”»’è
-        Vector2 p1 = transform.position;
-        Vector2 p2 = this.player.transform.position;
-        Vector2 dir = p1 - p2;
-        float d = dir.magnitude;
-        float r1 = 0.5f;
-        float r2 = 3.75f;
-
-        if (d < r1 + r2) {
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().Decrease();
-
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
             Destroy(gameObject);
         }
-    }
-
-    public void Attack()
-    {
-        Destroy(gameObject);
     }
 }
