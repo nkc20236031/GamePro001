@@ -9,7 +9,7 @@ public class EnemyGenerator : MonoBehaviour {
     float delta = 0;
 
     void Update() {
-        //0.25秒ごとに3~5回
+        //span秒ごとに1~3回出す
         this.delta += Time.deltaTime;
         if (this.delta > this.span) {
             this.delta = 0;
@@ -23,22 +23,25 @@ public class EnemyGenerator : MonoBehaviour {
                     cnt = 0;
                 }
                 go.name = "EnemyPrefab" + cnt;
+
+                //スポーン位置
                 switch (go.name) {
-                    case "EnemyPrefab0":
+                    case "EnemyPrefab0":                                    //右
                         go.transform.position = new Vector3(45, y, 0);
                         break;
-                    case "EnemyPrefab1":
+                    case "EnemyPrefab1":                                    //左
                         go.transform.position = new Vector3(-45, y, 0);
                         break;
-                    case "EnemyPrefab2":
+                    case "EnemyPrefab2":                                    //上
                         go.transform.position = new Vector3(x, 25, 0);
                         break;
-                    case "EnemyPrefab3":
+                    case "EnemyPrefab3":                                    //下
                         go.transform.position = new Vector3(x, -25, 0);
                         break;
 
                 }
             }
+            //スポーン間隔
             this.span = Random.Range(0.1f, 0.5f);
         }
     }

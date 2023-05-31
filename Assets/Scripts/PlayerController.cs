@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        //カーソルに向きを合わせる
         var mousePos = Camera.main.WorldToScreenPoint(transform.localPosition);
         var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
         transform.localRotation = rotation;
@@ -19,10 +20,12 @@ public class PlayerController : MonoBehaviour {
         float y = Input.GetAxisRaw("Vertical");
 
         //プレイヤーアニメーション
-        if(x >= 0 && y == 0) {
-            animator.SetTrigger("front");   //前進
-        } else if(x <= -0.01f && y == 0) {
-            animator.SetTrigger("back");    //後退
+        if(x >= 0 && y == 0) {                  //右
+            //animator.SetTrigger("front");     //前進
+            animator.SetTrigger("down");
+        } else if(x <= -0.01f && y == 0) {      //左
+            //animator.SetTrigger("back");      //後退
+            animator.SetTrigger("up");
         }
         if(y >= 0.01f) {
             animator.SetTrigger("up");      //上がる

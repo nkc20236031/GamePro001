@@ -19,7 +19,7 @@ public class BossEnemyController : MonoBehaviour {
     }
 
     void Update() {
-        //プレイヤーのほうに向かって移動
+        //プレイヤーに向けて移動
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 7.5f * Time.deltaTime);
 
         //範囲外に行くと削除

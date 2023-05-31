@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
-        //プレイヤーのほうに向かって移動
+        //プレイヤーに向けて移動
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 15 * Time.deltaTime);
 
         //範囲外に行くと削除
@@ -32,10 +32,6 @@ public class EnemyController : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-    }
-
-    void OnBecameInvisible() {
-        Destroy(this.gameObject);
     }
 
     //当たり判定

@@ -12,26 +12,28 @@ public class GameDirector : MonoBehaviour {
     GameObject bar;
     public static int km;
     public static float barAmo;
-    float barcnt;
     float limit = 100f;
     float time = 0f;
 
     void Start() {
+        //フレームレートを60に固定
         Application.targetFrameRate = 60;
+
         this.Gauge = GameObject.Find("Gauge");
         this.Distance = GameObject.Find("distance");
         this.killCnt = GameObject.Find("KillCnt");
         this.bar = GameObject.Find("Bar_1");
+
         km = 0;
     }
 
     void Update() {
-        //タイマー
+        //タイム(100s)
         this.time += Time.deltaTime;
         this.time /= limit;
         this.Gauge.GetComponent<Image>().fillAmount -= this.time;
 
-        //0になったら
+        //タイム終了
         if (this.Gauge.GetComponent<Image>().fillAmount  == 0) {
             SceneManager.LoadScene("TitleScene");
         }
@@ -43,13 +45,15 @@ public class GameDirector : MonoBehaviour {
         //倒した数
         this.killCnt.GetComponent<Text>().text = EnemyController.killCnt.ToString() + "kill";
 
-        //必殺技ゲージ
-        barcnt = EnemyController.Cnt;
+        //ゲージバー
+        float barcnt = EnemyController.Cnt;
         barAmo = barcnt / 100;
         this.bar.GetComponent<Image>().fillAmount = barAmo;
         if (this.bar.GetComponent<Image>().fillAmount == 1) {
             EnemyController.Cnt = 0;
             this.bar.GetComponent<Image>().fillAmount = EnemyController.Cnt;
+
+            //タイムの回復
             this.Gauge.GetComponent<Image>().fillAmount += 0.1f;
         }
     }

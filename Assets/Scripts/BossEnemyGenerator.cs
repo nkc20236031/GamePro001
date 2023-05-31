@@ -9,7 +9,7 @@ public class BossEnemyGenerator : MonoBehaviour {
     float delta = 0;
 
     void Update() {
-        //1秒ごと
+        //span秒ごとに出す
         this.delta += Time.deltaTime;
         if (this.delta > this.span) {
             this.delta = 0;
@@ -21,22 +21,25 @@ public class BossEnemyGenerator : MonoBehaviour {
                 cnt = 0;
             }
             go.name = "BossEnemyPrefab" + cnt;
+
+            //スポーン位置
             switch (go.name)
             {
-                case "BossEnemyPrefab0":
+                case "BossEnemyPrefab0":                                //右
                     go.transform.position = new Vector3(45, y, 0);
                     break;
-                case "BossEnemyPrefab1":
+                case "BossEnemyPrefab1":                                //左
                     go.transform.position = new Vector3(-45, y, 0);
                     break;
-                case "BossEnemyPrefab2":
+                case "BossEnemyPrefab2":                                //上
                     go.transform.position = new Vector3(x, 25, 0);
                     break;
-                case "BossEnemyPrefab3":
+                case "BossEnemyPrefab3":                                //下
                     go.transform.position = new Vector3(x, -25, 0);
                     break;
 
             }
+            //スポーン間隔
             this.span = Random.Range(1f, 1.5f);
         }
     }

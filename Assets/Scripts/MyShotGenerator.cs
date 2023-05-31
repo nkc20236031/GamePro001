@@ -18,7 +18,7 @@ public class MyShotGenerator : MonoBehaviour {
         this.players.x = this.player.transform.position.x;
         this.players.y = this.player.transform.position.y;
 
-        //0.125•b‚²‚Æ
+        //span•b‚²‚Æ‚Éo‚·
         this.delta += Time.deltaTime;
         if (Input.GetMouseButton(0) && this.delta > this.span) {
             this.delta = 0;

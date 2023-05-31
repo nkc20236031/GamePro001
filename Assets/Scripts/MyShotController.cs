@@ -10,6 +10,7 @@ public class MyShotController : MonoBehaviour {
         animator = GetComponent<Animator>();
         animator.speed = 0.25f;
 
+        //カーソルに向きを合わせる
         var mousePos = Camera.main.WorldToScreenPoint(transform.localPosition);
         var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
         transform.localRotation = rotation;
@@ -17,16 +18,15 @@ public class MyShotController : MonoBehaviour {
 
     void Update() {
         //フレームごとに等速で移動
-        switch (gameObject.name)
-        {
-            case "MyShot0Prefab":
-                transform.Translate(0, 0.5f, 0);
+        switch (gameObject.name) {
+            case "MyShot0Prefab":                       //真ん中
+                transform.Translate(0, 1, 0);
                 break;
-            case "MyShot1Prefab":
-                transform.Translate(0.25f, 0.5f, 0);
+            case "MyShot1Prefab":                       //右
+                transform.Translate(0.375f, 1, 0);
                 break;
-            case "MyShot2Prefab":
-                transform.Translate(-0.25f, 0.5f, 0);
+            case "MyShot2Prefab":                       //左
+                transform.Translate(-0.375f, 1, 0);
                 break;
         }
 
@@ -34,9 +34,5 @@ public class MyShotController : MonoBehaviour {
         if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
             Destroy(this.gameObject);
         }
-    }
-
-    void OnBecameInvisible() {
-        Destroy(this.gameObject);
     }
 }
