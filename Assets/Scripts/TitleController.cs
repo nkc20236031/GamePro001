@@ -14,6 +14,9 @@ public class TitleController : MonoBehaviour {
 
         KillTxt.GetComponent<Text>().text = "Kil Count: " + EnemyController.killCnt;
         Travel.GetComponent<Text>().text = GameDirector.km + "km";
+
+        EnemyController.killCnt = 0;
+        EnemyController.Cnt = 0;
     }
 
     void Update() {

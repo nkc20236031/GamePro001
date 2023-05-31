@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossEnemyGenerator : MonoBehaviour {
     public GameObject BossEnemyPrefab;
+    int cnt = 0;
     float span = 0.75f;
     float delta = 0;
 
@@ -13,9 +14,29 @@ public class BossEnemyGenerator : MonoBehaviour {
         if (this.delta > this.span) {
             this.delta = 0;
             GameObject go = Instantiate(BossEnemyPrefab);
-            int px = Random.Range(-13, 13);
-            go.name = "BossEnemyPrefab";
-            go.transform.position = new Vector3(35, px, 0);
+            int x = Random.Range(-40, 40);
+            int y = Random.Range(-18, 18);
+            cnt++;
+            if (cnt > 3) {
+                cnt = 0;
+            }
+            go.name = "BossEnemyPrefab" + cnt;
+            switch (go.name)
+            {
+                case "BossEnemyPrefab0":
+                    go.transform.position = new Vector3(45, y, 0);
+                    break;
+                case "BossEnemyPrefab1":
+                    go.transform.position = new Vector3(-45, y, 0);
+                    break;
+                case "BossEnemyPrefab2":
+                    go.transform.position = new Vector3(x, 25, 0);
+                    break;
+                case "BossEnemyPrefab3":
+                    go.transform.position = new Vector3(x, -25, 0);
+                    break;
+
+            }
             this.span = Random.Range(1f, 1.5f);
         }
     }

@@ -2,15 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossEnemyController : MonoBehaviour {
-    void Update() {
-        //フレームごとに等速で移動
-        transform.Translate(-0.25f, 0, 0);
+    Animator animator;
+    GameObject player;
+    int attack;
 
-        //画面外でのオブジェクト破棄
-        if (transform.position.x < -35.0f) {
-            Destroy(gameObject);
+    void Start() {
+        animator = GetComponent<Animator>();
+        animator.speed = 0.25f;
+
+        player = GameObject.Find("player");
+
+        attack = 0;
+    }
+
+    void Update() {
+        //プレイヤーのほうに向かって移動
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 7.5f * Time.deltaTime);
+
+        //範囲外に行くと削除
+        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
+            Destroy(this.gameObject);
         }
     }
 
@@ -22,6 +36,16 @@ public class BossEnemyController : MonoBehaviour {
             //GameDirectorのBDecreaseを呼び出す
             GameObject decrease = GameObject.Find("GameDirector");
             decrease.GetComponent<GameDirector>().BDecrease();
+        } else if (collision.gameObject.tag == "Shot") {
+            attack++;
+            if(attack >= 3) {
+                attack = 0;
+                EnemyController.Cnt++;
+                EnemyController.killCnt++;
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }
         }
+
     }
 }

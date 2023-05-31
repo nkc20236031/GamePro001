@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        var mousePos = Camera.main.WorldToScreenPoint(transform.localPosition);
+        var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
+        transform.localRotation = rotation;
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -20,7 +24,6 @@ public class PlayerController : MonoBehaviour {
         } else if(x <= -0.01f && y == 0) {
             animator.SetTrigger("back");    //å„ëﬁ
         }
-
         if(y >= 0.01f) {
             animator.SetTrigger("up");      //è„Ç™ÇÈ
         } else if(y <= -0.01f) {
@@ -30,8 +33,8 @@ public class PlayerController : MonoBehaviour {
 
         //à⁄ìÆîÕàÕ
         Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, -29, 29);
-        pos.y = Mathf.Clamp(pos.y, -15, 15);
+        pos.x = Mathf.Clamp(pos.x, -42, 42);
+        pos.y = Mathf.Clamp(pos.y, -20.5f, 20.5f);
         transform.position = pos;
     }
 }

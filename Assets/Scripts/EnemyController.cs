@@ -3,26 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
+    GameObject player;
     public static int killCnt;      //Enemyを倒した回数
+    public static int Cnt;
     int counter = 0;
     float move = 0.02f;
     float max = 30;
 
+    void Start () {
+        player = GameObject.Find("player");
+    }
+
     void Update() {
         counter++;
-        if (counter == max)
-        {
+        if (counter == max) {
             counter = 0;
             move *= Random.Range(-4, 4);
+            if(move >= 10) {
+                move = 10;
+            }
         }
 
-        //フレームごとに等速で移動
-        transform.Translate(-0.5f, move * 1.5f, 0);
+        //プレイヤーのほうに向かって移動
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 15 * Time.deltaTime);
 
-        //画面外でのオブジェクト破棄
-        if (transform.position.x < -35.0f) {
-            Destroy(gameObject);
+        //範囲外に行くと削除
+        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30)
+        {
+            Destroy(this.gameObject);
         }
+    }
+
+    void OnBecameInvisible() {
+        Destroy(this.gameObject);
     }
 
     //当たり判定
@@ -35,6 +48,7 @@ public class EnemyController : MonoBehaviour {
             decrease.GetComponent<GameDirector>().Decrease();
         } else if(collision.gameObject.tag == "Shot") {
             killCnt++;
+            Cnt++;
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
