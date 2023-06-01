@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 32
+  xPos: 42
+  yPos: 20.5
 --- !u!50 &57169046
 Rigidbody2D:
   serializedVersion: 4
@@ -417,6 +419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyShotPrefab: {fileID: 6661394423909972087, guid: 9b55ed0907ae1c9428453ffcbaf7b61e, type: 3}
+  span: 0.125
+  delta: 0
 --- !u!4 &262371679
 Transform:
   m_ObjectHideFlags: 0
@@ -462,6 +466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossEnemyPrefab: {fileID: 4672914157306689749, guid: 7c7fa51604726984c8f04f0e9d9ec5fe, type: 3}
+  span: 1
+  delta: 0
 --- !u!4 &275473689
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossEnemyPrefab: {fileID: 4672914157306689749, guid: 8000f6ad141e077408854da05ee013f4, type: 3}
+  BossCnt: 500
 --- !u!4 &345234212
 Transform:
   m_ObjectHideFlags: 0
@@ -796,6 +803,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591232726}
   m_CullTransparentMesh: 1
+--- !u!1 &870389424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870389426}
+  - component: {fileID: 870389425}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &870389425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870389424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc903418d613db4ba59ee109d2148e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &870389426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870389424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.48487574, y: 1.866724, z: -0.18470058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071427389
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +877,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 344152848884647586, guid: 920c30c7450850f4c8edb02cc88da85a, type: 3}
+  span: 0.375
+  delta: 0
 --- !u!4 &1071427391
 Transform:
   m_ObjectHideFlags: 0

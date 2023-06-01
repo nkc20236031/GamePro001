@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class TitleController : MonoBehaviour {
     GameObject KillTxt;     //ì|ÇµÇΩâÒêî
@@ -13,11 +10,9 @@ public class TitleController : MonoBehaviour {
         KillTxt = GameObject.Find("KillCnt");
         Travel = GameObject.Find("travel");
 
-        //ãLò^
         KillTxt.GetComponent<Text>().text = "Kil Count: " + EnemyController.killCnt;
         Travel.GetComponent<Text>().text = GameDirector.km + "km";
 
-        //èâä˙âª
         EnemyController.killCnt = 0;
         EnemyController.Cnt = 0;
     }

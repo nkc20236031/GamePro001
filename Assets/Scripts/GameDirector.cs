@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameDirector : MonoBehaviour {
     GameObject Gauge;
@@ -70,6 +67,6 @@ public class GameDirector : MonoBehaviour {
 
     public void BBDecrease() {
         //É^ÉCÉÄÇÃ50/100çÌÇÈ
-        this.Gauge.GetComponent<Image>().fillAmount -= 0.5f;
+        this.Gauge.GetComponent<Image>().fillAmount -= 0.375f;
     }
 }

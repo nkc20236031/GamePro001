@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
@@ -7,9 +5,9 @@ public class EnemyController : MonoBehaviour {
     public static int killCnt;      //Enemy‚ğ“|‚µ‚½‰ñ”
     public static int BossCnt;
     public static int Cnt;
-    int counter = 0;
-    float move = 0.02f;
-    float max = 30;
+    int counter;
+    float move;
+    float max;
 
     void Start () {
         player = GameObject.Find("player");

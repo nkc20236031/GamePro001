@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BossEnemyController : MonoBehaviour {
-    Animator animator;
     GameObject player;
     int attack;
+    float x = 45;
+    float y = 30;
 
     void Start() {
-        animator = GetComponent<Animator>();
-        animator.speed = 0.25f;
-
         player = GameObject.Find("player");
 
         attack = 0;
@@ -23,7 +17,7 @@ public class BossEnemyController : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 7.5f * Time.deltaTime);
 
         //îÕàÕäOÇ…çsÇ≠Ç∆çÌèú
-        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
+        if (transform.position.x < -x || transform.position.x > x || transform.position.y < -y || transform.position.y > y) {
             Destroy(this.gameObject);
         }
     }

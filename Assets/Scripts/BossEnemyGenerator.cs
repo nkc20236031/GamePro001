@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossEnemyGenerator : MonoBehaviour {
     public GameObject BossEnemyPrefab;
-    int cnt = 0;
-    float span = 0.75f;
-    float delta = 0;
+    int cnt;
+    public float span;
+    public float delta;
 
     void Update() {
         //spanïbÇ≤Ç∆Ç…èoÇ∑

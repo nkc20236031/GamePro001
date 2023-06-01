@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MyShotGenerator : MonoBehaviour {
     public GameObject MyShotPrefab;
     GameObject player;
     Vector2 players = Vector2.zero;
-    float span = 0.125f;
-    float delta = 0;
+    public float span;
+    public float delta;
 
     void Start() {
         this.player = GameObject.Find("player");

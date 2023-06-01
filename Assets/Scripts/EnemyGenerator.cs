@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
     public GameObject EnemyPrefab;
     int cnt = 0;
-    float span = 0.375f;
-    float delta = 0;
+    public float span = 0.375f;
+    public float delta = 0;
 
     void Update() {
         //span秒ごとに1~3回出す
@@ -22,7 +20,6 @@ public class EnemyGenerator : MonoBehaviour {
                     cnt = 0;
                 }
                 go.name = "EnemyPrefab" + cnt;
-
                 //スポーン位置
                 switch (go.name) {
                     case "EnemyPrefab0":                                    //右
@@ -39,8 +36,6 @@ public class EnemyGenerator : MonoBehaviour {
                         break;
                 }
             }
-            //スポーン間隔
-            this.span = Random.Range(0.1f, 0.5f);
         }
     }
 }
