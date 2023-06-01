@@ -20,7 +20,7 @@ public class MyShotGenerator : MonoBehaviour {
 
         //span•b‚²‚Æ‚Éo‚·
         this.delta += Time.deltaTime;
-        if (Input.GetMouseButton(0) && this.delta > this.span) {
+        if (Input.GetKey(KeyCode.Space) && this.delta > this.span || Input.GetMouseButton(0) && this.delta > this.span) {
             this.delta = 0;
             for (int i = 0; i < 3;  i++)
             {

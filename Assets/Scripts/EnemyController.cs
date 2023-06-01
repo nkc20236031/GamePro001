@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
     GameObject player;
     public static int killCnt;      //Enemy‚ğ“|‚µ‚½‰ñ”
+    public static int BossCnt;
     public static int Cnt;
     int counter = 0;
     float move = 0.02f;
@@ -28,8 +29,7 @@ public class EnemyController : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 15 * Time.deltaTime);
 
         //”ÍˆÍŠO‚És‚­‚Æíœ
-        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30)
-        {
+        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
             Destroy(this.gameObject);
         }
     }
@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour {
             decrease.GetComponent<GameDirector>().Decrease();
         } else if(collision.gameObject.tag == "Shot") {
             killCnt++;
+            BossCnt++;
             Cnt++;
             Destroy(gameObject);
             Destroy(collision.gameObject);

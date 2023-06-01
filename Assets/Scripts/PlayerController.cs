@@ -11,16 +11,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        //カーソルに向きを合わせる
-        var mousePos = Camera.main.WorldToScreenPoint(transform.localPosition);
-        var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
-        transform.localRotation = rotation;
-
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+        //カーソルに向きを合わせる
+        Vector3 mousePos = Camera.main.WorldToScreenPoint(transform.localPosition);
+        var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
+        transform.localRotation = rotation;
+
         //プレイヤーアニメーション
-        if(x >= 0 && y == 0) {                  //右
+        if (x >= 0 && y == 0) {                 //右
             //animator.SetTrigger("front");     //前進
             animator.SetTrigger("down");
         } else if(x <= -0.01f && y == 0) {      //左
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour {
             animator.SetTrigger("up");
         }
         if(y >= 0.01f) {
-            animator.SetTrigger("up");      //上がる
+            animator.SetTrigger("up");          //上がる
         } else if(y <= -0.01f) {
-            animator.SetTrigger("down");    //下がる
+            animator.SetTrigger("down");        //下がる
         }
         transform.position += new Vector3(x, y).normalized * Time.deltaTime * moveSpeed;
 

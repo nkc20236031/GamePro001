@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TitleController : MonoBehaviour {
     GameObject KillTxt;     //“|‚µ‚½‰ñ”

@@ -43,5 +43,4 @@ public class BossEnemyGenerator : MonoBehaviour {
             this.span = Random.Range(1f, 1.5f);
         }
     }
-
 }
