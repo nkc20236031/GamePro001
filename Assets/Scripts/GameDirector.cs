@@ -67,4 +67,9 @@ public class GameDirector : MonoBehaviour {
         //タイムの10/100削る
         this.Gauge.GetComponent<Image>().fillAmount -= 0.1f;
     }
+
+    public void BBDecrease() {
+        //タイムの50/100削る
+        this.Gauge.GetComponent<Image>().fillAmount -= 0.5f;
+    }
 }

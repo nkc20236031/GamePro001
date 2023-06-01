@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MyShotController : MonoBehaviour {
     Animator animator;
+    public explosion Explosion;
 
     void Start () {
         animator = GetComponent<Animator>();
@@ -33,6 +34,14 @@ public class MyShotController : MonoBehaviour {
         //îÕàÕäOÇ…çsÇ≠Ç∆çÌèú
         if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Instantiate(Explosion, gameObject.transform.localPosition, Quaternion.identity);
         }
     }
 }

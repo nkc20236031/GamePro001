@@ -22,15 +22,15 @@ public class BigBossEnemyController : MonoBehaviour {
         if (collision.gameObject.tag == "Player") {
             //GameDirector‚ÌBDecrease‚ğŒÄ‚Ño‚·
             GameObject decrease = GameObject.Find("GameDirector");
-            decrease.GetComponent<GameDirector>().BDecrease();
+            decrease.GetComponent<GameDirector>().BBDecrease();
         } else if (collision.gameObject.tag == "Shot") {
+            Destroy(collision.gameObject);
             attack++;
             if (attack >= 100) {
                 attack = 0;
                 EnemyController.Cnt+=50;
                 EnemyController.killCnt++;
                 Destroy(gameObject);
-                Destroy(collision.gameObject);
             }
         }
     }
