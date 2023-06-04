@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class BossEnemyController : MonoBehaviour {
     GameObject player;
+    public float speed;
     int attack;
     float x = 45;
     float y = 30;
 
     void Start() {
         player = GameObject.Find("player");
-
         attack = 0;
     }
 
     void Update() {
         //プレイヤーに向けて移動
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 7.5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
         //範囲外に行くと削除
         if (transform.position.x < -x || transform.position.x > x || transform.position.y < -y || transform.position.y > y) {

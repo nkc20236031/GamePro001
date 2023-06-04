@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour {
     int counter;
     float move;
     float max;
+    float x = 45;
+    float y = 30;
 
     void Start () {
         player = GameObject.Find("player");
@@ -27,7 +29,7 @@ public class EnemyController : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 15 * Time.deltaTime);
 
         //”ÍˆÍŠO‚És‚­‚Æíœ
-        if (transform.position.x < -45 || transform.position.x > 45 || transform.position.y < -30 || transform.position.y > 30) {
+        if (transform.position.x < -x || transform.position.x > x || transform.position.y < -y || transform.position.y > y) {
             Destroy(this.gameObject);
         }
     }

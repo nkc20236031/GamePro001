@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     Animator animator;
     public float moveSpeed;                     //スピード
-    public float xPos;
-    public float yPos;
+    public float xPos, yPos;
 
     private void Start() {
         animator = GetComponent<Animator>();
@@ -19,17 +18,12 @@ public class PlayerController : MonoBehaviour {
         transform.localRotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - mousePos);
 
         //プレイヤーアニメーション
-        if (x >= 0 && y == 0) {                 //右
-            //animator.SetTrigger("front");     //前進
-            animator.SetTrigger("down");
-        } else if(x < 0 && y == 0) {            //左
-            //animator.SetTrigger("back");      //後退
+        if(x == 0 && y == 0) {
+            animator.SetTrigger("front");
+        } else if(x >= 0 && y >= 0) {
             animator.SetTrigger("up");
-        }
-        if(y > 0) {
-            animator.SetTrigger("up");          //上がる
-        } else if(y < 0) {
-            animator.SetTrigger("down");        //下がる
+        } else if (x <= 0 && y <= 0) {
+            animator.SetTrigger("down");
         }
         transform.position += new Vector3(x, y).normalized * Time.deltaTime * moveSpeed;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour {
     GameObject KillTxt;     //“|‚µ‚½‰ñ”

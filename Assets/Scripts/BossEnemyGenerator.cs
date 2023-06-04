@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class BossEnemyGenerator : MonoBehaviour {
     public GameObject BossEnemyPrefab;
+    public float span, delta;
     int cnt;
-    public float span;
-    public float delta;
+    float x = 45;
+    float y = 25;
 
     void Update() {
         //span秒ごとに出す
@@ -12,8 +13,8 @@ public class BossEnemyGenerator : MonoBehaviour {
         if (this.delta > this.span) {
             this.delta = 0;
             GameObject go = Instantiate(BossEnemyPrefab);
-            int x = Random.Range(-40, 40);
-            int y = Random.Range(-18, 18);
+            int Ranx = Random.Range(-40, 40);
+            int Rany = Random.Range(-18, 18);
             cnt++;
             if (cnt > 3) {
                 cnt = 0;
@@ -24,21 +25,19 @@ public class BossEnemyGenerator : MonoBehaviour {
             switch (go.name)
             {
                 case "BossEnemyPrefab0":                                //右
-                    go.transform.position = new Vector3(45, y, 0);
+                    go.transform.position = new Vector3(x, Rany, 0);
                     break;
                 case "BossEnemyPrefab1":                                //左
-                    go.transform.position = new Vector3(-45, y, 0);
+                    go.transform.position = new Vector3(-x, Rany, 0);
                     break;
                 case "BossEnemyPrefab2":                                //上
-                    go.transform.position = new Vector3(x, 25, 0);
+                    go.transform.position = new Vector3(Ranx, y, 0);
                     break;
                 case "BossEnemyPrefab3":                                //下
-                    go.transform.position = new Vector3(x, -25, 0);
+                    go.transform.position = new Vector3(Ranx, -y, 0);
                     break;
 
             }
-            //スポーン間隔
-            this.span = Random.Range(1f, 1.5f);
         }
     }
 }
