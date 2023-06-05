@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BigBossEnemyController : MonoBehaviour {
-    GameObject player;
+    [SerializeField] private float speed;
+    [SerializeField] private float damage;
+    GameObject Player;
+    GameObject GameDirector;
     int attack;
 
     void Start() {
-        player = GameObject.Find("player");
-
+        Player = GameObject.Find("player");
+        GameDirector = GameObject.Find("GameDirector");
         attack = 0;
     }
 
     void Update() {
         //プレイヤーに向けて移動
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
     }
 
     //当たり判定
-    private void OnTriggerEnter2D(Collider2D collision) {
+    void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Player") {
-            //GameDirectorのBDecreaseを呼び出す
-            GameObject decrease = GameObject.Find("GameDirector");
-            decrease.GetComponent<GameDirector>().BBDecrease();
+            //ダメージ
+            GameDirector.GetComponent<GameDirector>().Decrease(damage);
         } else if (collision.gameObject.tag == "Shot") {
             Destroy(collision.gameObject);
             attack++;
             if (attack >= 100) {
                 attack = 0;
-                EnemyController.Cnt+=50;
+                EnemyController.Cnt += 50;
                 EnemyController.killCnt++;
                 Destroy(gameObject);
             }

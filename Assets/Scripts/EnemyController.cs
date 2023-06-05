@@ -1,30 +1,18 @@
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    GameObject player;
+    [SerializeField] private float x, y;
+    [SerializeField] private float damage;
     public static int killCnt;      //Enemyを倒した回数
     public static int BossCnt;
     public static int Cnt;
-    int counter;
-    float move;
-    float max;
-    float x = 45;
-    float y = 30;
+    GameObject player;
 
     void Start () {
         player = GameObject.Find("player");
     }
 
     void Update() {
-        counter++;
-        if (counter == max) {
-            counter = 0;
-            move *= Random.Range(-4, 4);
-            if(move >= 10) {
-                move = 10;
-            }
-        }
-
         //プレイヤーに向けて移動
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 15 * Time.deltaTime);
 
@@ -39,9 +27,9 @@ public class EnemyController : MonoBehaviour {
         if(collision.gameObject.tag == "Player") {
             Destroy(gameObject);
 
-            //GameDirectorのDecreaseを呼び出す
+            //ダメージ
             GameObject decrease = GameObject.Find("GameDirector");
-            decrease.GetComponent<GameDirector>().Decrease();
+            decrease.GetComponent<GameDirector>().Decrease(damage);
         } else if(collision.gameObject.tag == "Shot") {
             killCnt++;
             BossCnt++;

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 42588500}
   - component: {fileID: 42588499}
   m_Layer: 5
-  m_Name: distance
+  m_Name: Distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,9 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09f38f19a89a434a87ef56cd936bcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 32
   xPos: 42
   yPos: 20.5
+  moveSpeed: 32
 --- !u!50 &57169046
 Rigidbody2D:
   serializedVersion: 4
@@ -466,6 +466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossEnemyPrefab: {fileID: 4672914157306689749, guid: 7c7fa51604726984c8f04f0e9d9ec5fe, type: 3}
+  x: 45
+  y: 25
   span: 1
   delta: 0
 --- !u!4 &275473689
@@ -739,7 +741,7 @@ GameObject:
   - component: {fileID: 591232729}
   - component: {fileID: 591232728}
   m_Layer: 5
-  m_Name: Bar_1
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,6 +835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 344152848884647586, guid: 920c30c7450850f4c8edb02cc88da85a, type: 3}
+  x: 45
+  y: 25
   span: 0.375
   delta: 0
 --- !u!4 &1071427391
@@ -963,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b9b6e8387b6e442ac5ec8a6e9cd9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Heal: 0.075
 --- !u!4 &1640493216
 Transform:
   m_ObjectHideFlags: 0
@@ -990,7 +995,7 @@ GameObject:
   - component: {fileID: 1645039657}
   - component: {fileID: 1645039656}
   m_Layer: 5
-  m_Name: Bar_0
+  m_Name: Bar_BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

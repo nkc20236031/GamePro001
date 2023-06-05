@@ -124,6 +124,8 @@ MonoBehaviour:
   Explosion: {fileID: -8688979675759654157, guid: 8ab87d794f922e7428a00543baf588b7, type: 3}
   ShotSpeed: 1
   ShotAngle: 0.375
+  x: 45
+  y: 30
 --- !u!50 &-1347480657073882350
 Rigidbody2D:
   serializedVersion: 4

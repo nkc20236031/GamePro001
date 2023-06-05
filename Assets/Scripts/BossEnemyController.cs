@@ -1,11 +1,11 @@
 using UnityEngine;
 
 public class BossEnemyController : MonoBehaviour {
+    [SerializeField] private float x, y;
+    [SerializeField] private float speed;
+    [SerializeField] private float damage;
     GameObject player;
-    public float speed;
     int attack;
-    float x = 45;
-    float y = 30;
 
     void Start() {
         player = GameObject.Find("player");
@@ -27,9 +27,9 @@ public class BossEnemyController : MonoBehaviour {
         if (collision.gameObject.tag == "Player") {
             Destroy(gameObject);
 
-            //GameDirectorのBDecreaseを呼び出す
+            //ダメージ
             GameObject decrease = GameObject.Find("GameDirector");
-            decrease.GetComponent<GameDirector>().BDecrease();
+            decrease.GetComponent<GameDirector>().Decrease(damage);
         } else if (collision.gameObject.tag == "Shot") {
             Destroy(collision.gameObject);
             attack++;

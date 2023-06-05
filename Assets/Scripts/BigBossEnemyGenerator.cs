@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class BigBossEnemyGenerator : MonoBehaviour {
-    public GameObject BossEnemyPrefab;
-    public float BossCnt;
+    [SerializeField] private GameObject BossEnemyPrefab;
+    [SerializeField] private float BossCnt;
     bool bosscheck = false;
 
     void Update() {

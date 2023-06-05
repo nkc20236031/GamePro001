@@ -1,11 +1,10 @@
 using UnityEngine;
 
 public class BossEnemyGenerator : MonoBehaviour {
-    public GameObject BossEnemyPrefab;
-    public float span, delta;
+    [SerializeField] private GameObject BossEnemyPrefab;
+    [SerializeField] private float x, y;
+    [SerializeField] private float span, delta;
     int cnt;
-    float x = 45;
-    float y = 25;
 
     void Update() {
         //span秒ごとに出す
@@ -22,8 +21,7 @@ public class BossEnemyGenerator : MonoBehaviour {
             go.name = "BossEnemyPrefab" + cnt;
 
             //スポーン位置
-            switch (go.name)
-            {
+            switch (go.name) {
                 case "BossEnemyPrefab0":                                //右
                     go.transform.position = new Vector3(x, Rany, 0);
                     break;
@@ -36,7 +34,6 @@ public class BossEnemyGenerator : MonoBehaviour {
                 case "BossEnemyPrefab3":                                //下
                     go.transform.position = new Vector3(Ranx, -y, 0);
                     break;
-
             }
         }
     }

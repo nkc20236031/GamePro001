@@ -19,7 +19,7 @@ public class TitleController : MonoBehaviour {
 
     void Update() {
         //Z or Button0 Start
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)) {
+        if (Input.GetButtonDown("Start")) {
             SceneManager.LoadScene("GameScene");
         }
     }

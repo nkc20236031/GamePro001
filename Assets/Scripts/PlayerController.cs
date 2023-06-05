@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    [SerializeField] private float xPos, yPos;
+    [SerializeField] private float moveSpeed;                     //スピード
     Animator animator;
-    public float moveSpeed;                     //スピード
-    public float xPos, yPos;
 
     private void Start() {
         animator = GetComponent<Animator>();

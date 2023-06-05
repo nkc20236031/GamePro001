@@ -3,70 +3,75 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour {
-    GameObject Gauge;
-    GameObject Distance;
-    GameObject killCnt;
-    GameObject bar;
+    [SerializeField] private float Heal;
+
     public static int km;
-    public static float barAmo;
+    public static float BarAmo;
+
+    GameObject Gauge;
+    GameObject Bar;
+    GameObject Distance;
+    GameObject KillCnt;
+
+    Image Timer;
+    Image Skill;
+    Text Score;
+    Text Kill;
+
     float limit = 100f;
     float time = 0f;
+
+    float BarCnt;
 
     void Start() {
         //フレームレートを60に固定
         Application.targetFrameRate = 60;
 
-        this.Gauge = GameObject.Find("Gauge");
-        this.Distance = GameObject.Find("distance");
-        this.killCnt = GameObject.Find("KillCnt");
-        this.bar = GameObject.Find("Bar_1");
-
         km = 0;
+
+        Gauge = GameObject.Find("Gauge");
+        Bar = GameObject.Find("Bar");
+        Distance = GameObject.Find("Distance");
+        KillCnt = GameObject.Find("KillCnt");
+
+        Timer = Gauge.GetComponent<Image>();
+        Skill = Bar.GetComponent<Image>();
+        Score = Distance.GetComponent<Text>();
+        Kill = KillCnt.GetComponent<Text>();
     }
 
     void Update() {
         //タイム(100s)
-        this.time += Time.deltaTime;
-        this.time /= limit;
-        this.Gauge.GetComponent<Image>().fillAmount -= this.time;
+        time += Time.deltaTime;
+        time /= limit;
+        Timer.fillAmount -= time;
 
         //タイム終了
-        if (this.Gauge.GetComponent<Image>().fillAmount  == 0) {
+        if (Timer.fillAmount  == 0) {
             SceneManager.LoadScene("TitleScene");
         }
 
         //60km/s
         km ++;
-        this.Distance.GetComponent<Text>().text = km.ToString("000000") + "km";
+        Score.text = km.ToString("000000") + "km";
 
         //倒した数
-        this.killCnt.GetComponent<Text>().text = EnemyController.killCnt.ToString() + "kill";
+        Kill.text = EnemyController.killCnt.ToString() + "kill";
 
-        //ゲージバー
-        float barcnt = EnemyController.Cnt;
-        barAmo = barcnt / 100;
-        this.bar.GetComponent<Image>().fillAmount = barAmo;
-        if (this.bar.GetComponent<Image>().fillAmount == 1) {
+        //スキルバー
+        BarCnt = EnemyController.Cnt;
+        BarAmo = BarCnt / 100;
+        Skill.fillAmount = BarAmo;
+        if (Skill.fillAmount == 1) {
             EnemyController.Cnt = 0;
-            this.bar.GetComponent<Image>().fillAmount = EnemyController.Cnt;
+            Skill.fillAmount = EnemyController.Cnt;
 
             //タイムの回復
-            this.Gauge.GetComponent<Image>().fillAmount += 0.1f;
+            Timer.fillAmount += Heal;
         }
     }
 
-    public void Decrease() {
-        //タイムの5/100削る
-        this.Gauge.GetComponent<Image>().fillAmount -= 0.05f;
-    }
-
-    public void BDecrease() {
-        //タイムの10/100削る
-        this.Gauge.GetComponent<Image>().fillAmount -= 0.1f;
-    }
-
-    public void BBDecrease() {
-        //タイムの25/100削る
-        this.Gauge.GetComponent<Image>().fillAmount -= 0.25f;
+    public void Decrease(float Damage) {
+        Timer.fillAmount -= Damage;
     }
 }

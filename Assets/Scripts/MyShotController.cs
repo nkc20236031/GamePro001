@@ -1,10 +1,9 @@
 using UnityEngine;
 
 public class MyShotController : MonoBehaviour {
-    public explosion Explosion;
-    public float ShotSpeed, ShotAngle;
-    float x = 45;
-    float y = 30;
+    [SerializeField] private explosion Explosion;
+    [SerializeField] private float ShotSpeed, ShotAngle;
+    [SerializeField] private float x, y;
 
     void Update() {
         switch (gameObject.name) {

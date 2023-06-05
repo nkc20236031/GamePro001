@@ -1,11 +1,10 @@
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
-    public GameObject EnemyPrefab;
-    public float span, delta;
+    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private float x, y;
+    [SerializeField] private float span, delta;
     int cnt = 0;
-    float x = 45;
-    float y = 25;
 
     void Update() {
         //span•b‚²‚Æ‚É1~3‰ño‚·

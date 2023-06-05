@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class MyShotGenerator : MonoBehaviour {
-    public GameObject MyShotPrefab;
+    [SerializeField] private GameObject MyShotPrefab;
+    [SerializeField] private float span, delta;
     GameObject player;
-    public float span, delta;
 
     void Start() {
         this.player = GameObject.Find("player");
@@ -15,6 +15,7 @@ public class MyShotGenerator : MonoBehaviour {
 
         //span•b‚²‚Æ‚Éo‚·
         this.delta += Time.deltaTime;
+        //Space or mouse0
         if (Input.GetButton("Shot") && this.delta > this.span) {
             this.delta = 0;
             for (int i = 0; i < 3; i++) {
